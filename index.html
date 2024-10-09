@@ -1,3 +1,33 @@
-<html>
-<p>Hello</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect Page</title>
+    <script type="text/javascript">
+        window.onload = function() {
+            // Get the current URL's query string
+            const urlParams = new URLSearchParams(window.location.search);
+            // Look for the 'redir' parameter
+            const redirectUrl = urlParams.get('redir');
+
+            // If the 'redir' parameter exists, redirect to the specified URL
+            if (redirectUrl) {
+                window.location.href = redirectUrl;
+            }
+        };
+    </script>
+</head>
+<body>
+    <p>If you're not redirected automatically, <a id="redirectLink" href="#">click here</a>.</p>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const redirectUrl = urlParams.get('redir');
+
+        if (redirectUrl) {
+            // Update the link in case JavaScript is disabled
+            document.getElementById('redirectLink').href = redirectUrl;
+        }
+    </script>
+</body>
 </html>
